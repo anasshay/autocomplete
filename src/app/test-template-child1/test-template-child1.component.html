@@ -1,0 +1,20 @@
+<h4>Client 1 - Cities</h4>
+
+<!-- Using @Input to pass template into component -->
+<ng-template #selectedTemplate let-city>
+  {{ city?.name || "City" }}
+</ng-template>
+
+<app-test-template [options]="cities" [selectedTemplate]="selectedTemplate">
+  <!-- Using @ContentChild to pass template into component -->
+  <ng-template #optionTemplate let-city let-id="index">
+    <div>
+      <div>
+        <b>{{ city.name }}</b>
+      </div>
+      <img height="100" width="150" src="{{ city.pic }}" />
+      <span *ngFor="let i of [].constructor(city.id)"> &#x2B50;</span>
+      <button class="btn btn-danger" style="width: 100%">Buy Now!</button>
+    </div>
+  </ng-template>
+</app-test-template>

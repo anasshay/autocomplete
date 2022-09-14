@@ -1,0 +1,31 @@
+<div
+  class="auto-complete-wrapper"
+  #hostRef
+  [style.--outlineColor]="outlineColor"
+  [style.--borderColor]="borderColor"
+  [style.--width]="width"
+  [style.--font]="inputFontFamily"
+>
+  <input
+    type="text"
+    class="auto-complete-input"
+    [placeholder]="placeHolder"
+    aria-label="Item"
+    [formControl]="itemCtrl"
+    (focus)="inputOnFocus = true"
+  />
+  <div class="auto-complete-options" *ngIf="inputOnFocus">
+    <div
+      class="input-item"
+      *ngFor="let item of filteredStates | async"
+      (click)="selectItem(item)"
+    >
+      <ng-container
+        *ngIf="headerTemplateRef"
+        [ngTemplateOutlet]="headerTemplateRef"
+        [ngTemplateOutletContext]="{ $implicit: item }"
+      >
+      </ng-container>
+    </div>
+  </div>
+</div>

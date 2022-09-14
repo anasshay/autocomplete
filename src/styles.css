@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 23px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.bug {
+  background-image: url(https://img.favpng.com/0/10/21/computer-icons-malware-software-bug-png-favpng-6FLrthRjbT5dYdtAJ0dLFGhWq.jpg);
+}
+.task {
+  background-image: url(https://png.pngtree.com/png-vector/20190302/ourmid/pngtree-vector-task-icon-png-image_718986.jpg);
+}
+
+.span-pic {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+  margin-right: 5px;
+}
