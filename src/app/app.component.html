@@ -1,6 +1,6 @@
 <app-auto-complete
   [dataSource]="items"
-  placeHolder="Search"
+  placeHolder="Find an item"
   (onSelectItem)="getSelectedItem($event)"
   [outlineColor]="'lightblue'"
   [borderColor]="'#c8c8c8'"
@@ -9,8 +9,9 @@
 >
   <ng-template let-item #rowTemplate>
     <div style="display: flex; align-items: center; width: 100%">
-      <span [class]="item.pic" [ngClass]="'span-pic'"></span>
+      <span [class]="'bug'" [ngClass]="'span-pic'"></span>
       <span>{{ item.name }}</span>
     </div>
   </ng-template>
 </app-auto-complete>
+

@@ -1,5 +1,6 @@
 .auto-complete-wrapper {
-  width: var(--width, 300px);
+  width: min(60vw, var(--width, 300px));
+  position: relative;
 }
 
 .auto-complete-wrapper .auto-complete-input {
@@ -23,8 +24,12 @@
 }
 
 .auto-complete-wrapper .auto-complete-options {
+  position: absolute;
+  z-index: 2;
+  transform: translateY(3px);
+  background-color: #fff;
   box-sizing: border-box;
-  width: 100%;
+  width: inherit;
   max-height: 250px;
   overflow-y: scroll;
   border-bottom-left-radius: 4px;
@@ -39,6 +44,13 @@
   display: flex;
   align-items: center;
   padding: 0 8px;
+}
+.auto-complete-wrapper .input-item-no-data {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  place-content: center;
 }
 
 .auto-complete-wrapper .input-item:hover {

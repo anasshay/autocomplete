@@ -29,6 +29,7 @@ export class AutoCompleteComponent implements OnInit, OnDestroy {
   itemCtrl: FormControl;
   filteredItems: Observable<any[]>;
   inputOnFocus: boolean = false;
+  noDataAvailable: boolean = false;
 
   @Input('dataSource') dataSource: Item[] = [];
   @Input('placeHolder') placeHolder: string = '';
@@ -55,6 +56,8 @@ export class AutoCompleteComponent implements OnInit, OnDestroy {
         if (typeof inputText === 'object') {
           return this.filterItems('');
         } else if (inputText) {
+          this.noDataAvailable =
+            this.filterItems(inputText).length === 0 ? true : false;
           return this.filterItems(inputText);
         } else {
           return this.dataSource;
