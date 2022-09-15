@@ -17,7 +17,7 @@
   <div class="auto-complete-options" *ngIf="inputOnFocus">
     <div
       class="input-item"
-      *ngFor="let item of filteredStates | async"
+      *ngFor="let item of filteredItems | async"
       (click)="selectItem(item)"
     >
       <ng-container

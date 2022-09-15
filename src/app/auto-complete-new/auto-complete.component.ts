@@ -16,7 +16,7 @@ import { Observable, Subscription, fromEvent } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
-export class State {
+export class Item {
   constructor(public id: number, public name: string) {}
 }
 
@@ -27,17 +27,17 @@ export class State {
 })
 export class AutoCompleteComponent implements OnInit, OnDestroy {
   itemCtrl: FormControl;
-  filteredStates: Observable<any[]>;
+  filteredItems: Observable<any[]>;
   inputOnFocus: boolean = false;
 
-  @Input() dataSource: State[] = [];
+  @Input('dataSource') dataSource: Item[] = [];
   @Input('placeHolder') placeHolder: string = '';
   @Input('outlineColor') outlineColor: string = '';
   @Input('borderColor') borderColor: string = '';
   @Input('width') width: string = '';
   @Input('inputFontFamily') inputFontFamily: string = '';
 
-  @Output('onSelectItem') onSelectItem: EventEmitter<any> = new EventEmitter();
+  @Output('onSelectItem') onSelectItem: EventEmitter<Item> = new EventEmitter();
 
   @ViewChild('hostRef') hostRef!: ElementRef<HTMLDivElement>;
   @ContentChild('rowTemplate', { static: false }) headerTemplateRef:
@@ -49,7 +49,7 @@ export class AutoCompleteComponent implements OnInit, OnDestroy {
 
   constructor() {
     this.itemCtrl = new FormControl();
-    this.filteredStates = this.itemCtrl.valueChanges.pipe(
+    this.filteredItems = this.itemCtrl.valueChanges.pipe(
       startWith(''),
       map((inputText) => {
         if (typeof inputText === 'object') {
@@ -79,7 +79,7 @@ export class AutoCompleteComponent implements OnInit, OnDestroy {
     );
   }
 
-  selectItem(item: any) {
+  selectItem(item: Item) {
     this.itemCtrl.patchValue('');
     this.inputOnFocus = false;
     this.onSelectItem.emit(item);

@@ -18,6 +18,9 @@
 .auto-complete-wrapper .auto-complete-input:focus::placeholder {
   color: transparent;
 }
+.auto-complete-wrapper .auto-complete-input:hover {
+  border-color: #767676;
+}
 
 .auto-complete-wrapper .auto-complete-options {
   box-sizing: border-box;
