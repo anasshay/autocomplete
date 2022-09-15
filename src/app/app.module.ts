@@ -13,7 +13,7 @@ import { HighlightPipe } from './auto-complete-with-highlight/highlight.pipe';
 import { CustomisedAutoCompleteComponent } from './customised-auto-complete/customised-auto-complete.component';
 import { TestTemplateComponent } from './test-template/test-template.component';
 import { TestTemplateChild1Component } from './test-template-child1/test-template-child1.component';
-import { AutoCompleteComponent } from './auto-complete-new/auto-complete.component';
+import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 
 @NgModule({
   declarations: [
