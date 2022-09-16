@@ -5,6 +5,7 @@
   [style.--borderColor]="borderColor"
   [style.--width]="width"
   [style.--font]="inputFontFamily"
+  (keydown)="handleKeydown($event)"
 >
   <input
     type="text"
@@ -12,13 +13,22 @@
     [placeholder]="placeHolder"
     aria-label="Item"
     [formControl]="itemCtrl"
-    (focus)="inputOnFocus = true"
+    id="auto-complete-input"
+    [(ngModel)]="inputText"
+    (input)="handleInputChange()"
   />
-  <div class="auto-complete-options" *ngIf="inputOnFocus">
+  <div
+    class="auto-complete-options"
+    *ngIf="inputOnFocus"
+    id="auto-complete-options"
+  >
     <div
+      [ngClass]="activeItem === i ? 'active' : ''"
       class="input-item"
-      *ngFor="let item of filteredItems | async"
+      *ngFor="let item of filteredItems | async; let i = index"
       (click)="selectItem(item)"
+      #listDiv
+      [tabindex]="i === 0 ? 0 : -1"
     >
       <ng-container
         *ngIf="headerTemplateRef"
